@@ -30,12 +30,12 @@ window.findNRooksSolution = function(n) {
     } else {
 
       for (var column = 0; column < board.rows().length; column++) {
-        board.togglePiece(rowIndex, column);
+        board.toggle(rowIndex, column);
 
-        if (!board.hasAnyRooksConflicts()) {
+        if (!board.hasAnyRooksConflict()) {
           checkSolution(rowIndex + 1, column, board);
         } else {
-          board.togglePiece(rowIndex, column);
+          board.toggle(rowIndex, column);
         }
       }
     }
