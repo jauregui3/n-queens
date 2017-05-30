@@ -28,7 +28,7 @@ window.findNRooksSolution = function(n) {
       for (var column = 0; column < board.rows().length; column++) {
         board.togglePiece(rowIndex, column);
 
-        if (!board.hasAnyRooksConflicts()) {
+        if (!board.hasColConflictAt(column)) {
           return checkSolution(rowIndex + 1, board);
         }
         board.togglePiece(rowIndex, column);
