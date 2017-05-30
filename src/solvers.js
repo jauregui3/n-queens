@@ -18,25 +18,25 @@
 window.findNRooksSolution = function(n) {
   var board = new Board({n: n});
 
-  var checkSolution = function(rowIndex, board) {
+  var checkSolution = function(rowIndex, colIndex, board) {
     //base case
     if (board.rows().length === rowIndex) {
 
       return board.rows();
     } else {
 
-      for (var column = 0; column < board.rows().length; column++) {
+      for (var column = colIndex; column < board.rows().length; column++) {
         board.togglePiece(rowIndex, column);
 
         if (!board.hasColConflictAt(column)) {
-          return checkSolution(rowIndex + 1, board);
+          return checkSolution(rowIndex + 1, column + 1, board);
         }
         board.togglePiece(rowIndex, column);
       }
     }
   };
 
-  var solution = checkSolution(0, board);
+  var solution = checkSolution(0, 0, board);
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
