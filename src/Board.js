@@ -85,11 +85,14 @@
 
       for (var i = 0; i < this.rows()[rowIndex].length; i++) {
         if (this.rows()[rowIndex][i] === 1) {
-          count++;     //[0, 0, 1, 1]
+          count++;
+          if (count > 1) {
+            return true;
+          }
         }
       }
 
-      return count > 1;
+      return false;
     },
 
     // test if any rows on this board contain conflicts
